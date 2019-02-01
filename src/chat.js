@@ -3,7 +3,7 @@ import {applyMiddleware, createStore} from "redux";
 
 
 const accessToken = '352088e786114e9c9f9004eaf8a590e1';
-const client = new ApiAiClient({accessToken})
+const client = new ApiAiClient({accessToken});
 
 
 const ON_MESSAGE = 'ON_MESSAGE';
@@ -19,7 +19,7 @@ const messageMiddleware = () => next => action => {
 
     function onSuccess(response) {
             const {result: {fulfillment}} = response;
-            next(sendMessage(fulfillment.speech, 'bot'));
+            next(sendMessage("Bot: " + fulfillment.speech, 'bot'));
         }
 
     if(action.type === ON_MESSAGE) {
